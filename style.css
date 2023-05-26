@@ -10,26 +10,142 @@ body {
     overflow: hidden;
     margin: 0;
     text-align: center;
-    background-color: #516dff;
+    background-color: #5C8984;
     color: whitesmoke;
 }
 
+a {
+    color: whitesmoke;
+}
+
+h1 {
+    line-height: 1.4;
+}
+
 .btn {
+    display: block;
+    padding: 1em 1em;
+    background: transparent;
+    outline: none;
     border: 0;
-    background-color: whitesmoke;
-    color: #516dff;
-    padding: 15px 20px;
+    color: whitesmoke;
     font-family: inherit;
-    cursor: pointer;
-    margin-top: 1rem;
+    font-size: 15px;
+    font-weight: bold;
+    z-index: 1;
+    margin-top: 2rem;
+}
+
+.cube {
+    position: relative;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.cube .bg-top {
+    position: absolute;
+    height: 10px;
+    background: whitesmoke;
+    bottom: 100%;
+    left: 5px;
+    right: -5px;
+    -webkit-transform: skew(-45deg, 0);
+    -ms-transform: skew(-45deg, 0);
+    transform: skew(-45deg, 0);
+    margin: 0;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.cube .bg-top .bg-inner {
+    bottom: 0;
+}
+
+.cube .bg {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    background: whitesmoke;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.cube .bg-right {
+    position: absolute;
+    background: whitesmoke;
+    top: -5px;
+    z-index: 0;
+    bottom: 5px;
+    width: 10px;
+    left: 100%;
+    -webkit-transform: skew(0, -45deg);
+    -ms-transform: skew(0, -45deg);
+    transform: skew(0, -45deg);
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.cube .bg-right .bg-inner {
+    left: 0;
+}
+
+.cube .bg-inner {
+    background: #374259;
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    top: 2px;
+    bottom: 2px;
+}
+
+.cube .text {
+    position: relative;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.cube:hover .bg-inner {
+    background: whitesmoke;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.cube:hover .text {
+    color: #374259;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.cube:hover .bg-right,
+.cube:hover .bg,
+.cube:hover .bg-top {
+    background: #374259;
+}
+
+.cube:active {
+    z-index: 9999;
+    -webkit-animation: bounce .1s linear;
+    animation: bounce .1s linear;
+}
+
+@-webkit-keyframes bounce {
+    50% {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+}
+
+@keyframes bounce {
+    50% {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
 }
 
 .btn:focus {
     outline: 0;
-}
-
-.btn:hover {
-    opacity: 0.9;
 }
 
 .screen {
@@ -39,10 +155,48 @@ body {
     justify-content: center;
     height: 100vh;
     width: 100vw;
+    position: relative;
+}
+
+.by {
+    position: absolute;
+    bottom: 50px;
+}
+
+.screen.up {
+    margin-top: -100vh;
+}
+
+.insect-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.insect-list li {
+    margin: 10px;
+}
+
+.choose-insect {
+    background-color: transparent;
+    border: 2px solid whitesmoke;
+    color: whitesmoke;
+    cursor: pointer;
+    font-family: inherit;
+    width: 180px;
+    height: 180px;
+    border-radius: 2px;
 }
 
 .choose-insect img {
     width: 100px;
     height: 100px;
     object-fit: contain;
+}
+
+.choose-insect:hover {
+    background-color: whitesmoke;
+    color: #5C8984;
 }

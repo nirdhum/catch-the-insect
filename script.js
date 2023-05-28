@@ -5,13 +5,16 @@ const game_container = document.getElementById('game-container')
 const timeElement = document.getElementById('time')
 const scoreElement = document.getElementById('score')
 const messageElement = document.getElementById('message')
+const continue_gameElement = document.getElementById('continue-game')
 const yes_select_btn = document.getElementById('yes')
 const no_select_btn = document.getElementById('no')
+const continue_btn = document.getElementById('continue')
 // const originalMessage = messageElement.innerHTML
 
 let seconds = 0
 let score = 0
 let selected_insect = {}
+let messageShow = [9,]
 
 play_btn.addEventListener('click', () => {
     screens[0].classList.add('up')
@@ -71,14 +74,17 @@ function catchInsect() {
 }
 
 function increaseScore() {
+    let x = 10
+    console.log(x)
     score += 1
-    if (score > 9) {
+    if (score == x) {
         messageElement.classList.add('visible')
 
         yes_select_btn.addEventListener('click', yes)
         no_select_btn.addEventListener('click', no)
     }
     scoreElement.innerHTML = `Score: ${score}`
+    x = x + 10
 }
 
 function addInsects() {
@@ -87,20 +93,16 @@ function addInsects() {
 }
 
 function yes() {
-    messageElement.innerHTML = `<p>Congratulations, to me. I have successfully annoyed you<span
-    class="emoji">😂</span></p>
-    <button class="btn-select" id="continue">Want to Continue?</button>`
-
-    const continue_btn = document.getElementById('continue')
-
+    messageElement.classList.remove('visible')
+    continue_gameElement.classList.add('visible')
     continue_btn.addEventListener('click', continue_game)
-
-
-
 }
 
 function no() {
-    messageElement.innerHTML = `<p>Congratulations, you earned <span>${score}</span> points!</p><button class="btn-select" id="continue">Want to Continue?</button>`
+    messageElement.classList.remove('visible')
+
+    continue_gameElement.innerHTML = `<p>Congratulations, you earned <span>${score}</span> points!</p><button class="btn-select" id="continue">Continue Forever?</button>`
+    continue_gameElement.classList.add('visible')
 
     const continue_btn = document.getElementById('continue')
 
@@ -108,19 +110,5 @@ function no() {
 }
 
 function continue_game() {
-    setTimeout(messageElement.classList.remove('visible'), 2000)
-    messageElement.innerHTML = ``
-    changeText()
-}
-
-function changeText() {
-    messageElement.innerHTML = `
-    <h5>
-    Are you annoyed yet?<span class="emoji">🤔</span> <br> You are playing an impossible game.<span
-        class="emoji">😂</span>
-    </h5>
-    <button class="btn-select" id="yes">Yes</button>
-    <button class="btn-select" id="no">No</button>`
-    yes_select_btn.addEventListener('click', yes)
-    no_select_btn.addEventListener('click', no)
+    setTimeout(continue_gameElement.classList.remove('visible'), 2000)
 }

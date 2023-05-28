@@ -92,7 +92,7 @@ h1 {
 }
 
 .cube .bg-inner {
-    background: #374259;
+    background: #5C8984;
     position: absolute;
     left: 2px;
     right: 2px;
@@ -113,7 +113,7 @@ h1 {
 }
 
 .cube:hover .text {
-    color: #374259;
+    color: #5C8984;
     -webkit-transition: all 0.4s;
     transition: all 0.4s;
 }
@@ -121,7 +121,7 @@ h1 {
 .cube:hover .bg-right,
 .cube:hover .bg,
 .cube:hover .bg-top {
-    background: #374259;
+    background: #5C8984;
 }
 
 .cube:active {
@@ -199,4 +199,89 @@ h1 {
 .choose-insect:hover {
     background-color: whitesmoke;
     color: #5C8984;
+}
+
+.choose-insect:active {
+    background-color: rgba(245, 245, 245, 0.7);
+}
+
+.emoji {
+    font-size: 1.5rem;
+}
+
+.time,
+.score {
+    position: absolute;
+    top: 20px;
+    letter-spacing: 3px;
+}
+
+.time {
+    left: 20px;
+}
+
+.score {
+    right: 20px;
+}
+
+.message {
+    background-color: #1d2c2b75;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    width: 100%;
+    padding: 1.2rem;
+    z-index: 100;
+    text-align: center;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -150%);
+    transition: transform 0.4s ease-in-out;
+}
+
+.message.visible {
+    opacity: 1;
+    transform: translate(-50%, 150%);
+}
+
+.btn-select {
+    padding: 1em 1em;
+    background: transparent;
+    outline: none;
+    border: solid 1px whitesmoke;
+    text-align: center;
+    color: whitesmoke;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-select:hover {
+    background: whitesmoke;
+    border: solid 1px whitesmoke;
+    color: #5C8984
+}
+
+.insect {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.3s ease-in-out;
+    /* top: 200px;
+    left: 300px; */
+}
+
+.insect.caught {
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.insect img {
+    width: 80px;
+    height: 80px;
 }
